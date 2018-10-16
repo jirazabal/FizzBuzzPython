@@ -7,11 +7,10 @@ def main():
     CEND = '\033[0m' 
     running = True #flag for main loop
     introDone = False #flag to display intro once
-    dictLoopIsDone = False #flag to ask user for custom multiples and words
     testCaseScreenShow = True #flag to show test case screen
     testSelection = 0 #selection choice for which test to run
-    testCaseRun = 0
-    customInput = ""
+    testCaseRun = 0 #selection for whether or not to run test cases
+    nonSeqList = [] #list for custom input
 
 
     while (running):
@@ -51,6 +50,9 @@ def main():
                     print("*  4. Part D - For multiples of 38, print 'Bazz'        *")
                     print("*  5. Part E - Custom input!                            *")
                     print("*                                                       *")
+                    print("*                                                       *")
+                    print("*                                                       *")
+                    print("*  9. Enter non-sequential numbers as a list            *")
                     print("*  0. Exit                                              *")
                     print("*********************************************************")
                     print()
@@ -89,6 +91,13 @@ def main():
                         testE.partETest()
                         continue
 
+                    if (testSelection == 9):
+                        nonSeqNumbers = input("Please enter numbers as comma separated list (e.g. 3, 1, 2)\n")
+                        for num in nonSeqNumbers.split(','):
+                            nonSeqList.append(int(num))
+                        testList = Test(nonSeqList)
+                        testList.testList()
+                        
                     if (testSelection == 0):
                         testCaseRun = False
                         break
@@ -96,7 +105,9 @@ def main():
                     else:
                         print("Please enter a valid number...")
 
-        running = False
+        if (testCaseRun == 2):
+            print("Exiting program...")
+            running = False
         
 
 if __name__ == "__main__":

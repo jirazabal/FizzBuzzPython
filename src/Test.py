@@ -6,15 +6,19 @@ class Test:
         if (len(args) == 2): #start and stop indices
             self.start = args[0] #args[0] is always start
             self.stop = args[1] #args[1] is always stop
+        if (len(args) == 1 and type(args[0]) is list):
+            self.nonSeqList = args[0] #args[0] is always the list 
         
     
     def testList(self):
-
         #test custom input of non sequential numbers
-        fizzbuzz1 = SuperFizzBuzz([31, 12, 33, 11, 15])
-        print("Test 1: Custom Non-Sequential Numbers")
-        fizzbuzz1.printSetOfNumbers()
+        fizzbuzzList = SuperFizzBuzz(self.nonSeqList)
+        print("Test: Custom Non-Sequential Numbers")
+        print("Default Parameters: 3: 'Fizz', 5: 'Buzz'")
+        fizzbuzzList.printSetOfNumbers()
+        del self.nonSeqList[:] #make sure to delete contents of list so it's reusable
         print()
+        input("Please press Enter to return.")
         print()
 
     #part a - Print the numbers from -12 through 145.
@@ -55,7 +59,9 @@ class Test:
 
     #part e - Print the appropriate combination of tokens for any number that matches more than one of those rules
     def partETest(self):
+        cInput = 0
         dictLoopIsDone = False
+        askForMore = True
         fizzDict = {}
         while (not dictLoopIsDone):
             print()
@@ -67,6 +73,7 @@ class Test:
             print("***********************************************************")
             print()
             key = int(input())
+
             print()
             print("***********************************************************")
             print("*                                                         *")
@@ -85,8 +92,21 @@ class Test:
             print("*    1. Yes                                2. No          *")
             print("*                                                         *")
             print("***********************************************************")
-            cInput = int(input())
-            if(cInput == 2):
+            while (askForMore):
+                cInput = input()
+                try:
+                    cInput = int(cInput)
+                except:
+                    print("Please enter a valid number.")
+                    continue
+                if (cInput == 1 or cInput == 2):
+                    askForMore = False
+                else:
+                    print()
+                    print("Please enter a valid number.")
+            if (cInput == 1):
+                askForMore = True
+            if (cInput == 2):
                 dictLoopIsDone = True
 
         print("Printing numbers that are multiples of ", end = "") 
