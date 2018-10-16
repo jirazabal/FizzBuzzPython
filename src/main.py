@@ -100,6 +100,8 @@ def main():
                         
                     if (testSelection == 0):
                         testCaseRun = False
+                        print("Exiting program...")
+                        running = False
                         break
 
                     else:
