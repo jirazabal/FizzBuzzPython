@@ -1,5 +1,5 @@
-Run Instructions:
-    From cmd line (tested on Mac OS Mojave):
-        cd to FizzBuzz_Asssignment/src
-        python3 main.py
+Run Instructions: <br />
++ From cmd line (tested on Mac OS Mojave): <br />
++    cd to FizzBuzz_Asssignment/src <br />
++    python3 main.py
 
